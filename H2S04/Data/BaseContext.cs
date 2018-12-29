@@ -23,6 +23,19 @@ namespace H2S04.Data
             modelBuilder.Entity<Product>().ToTable("product");
             modelBuilder.Entity<Category>().ToTable("category");
 
+            modelBuilder.Entity<ProductCategory>()
+            .HasKey(t => new { t.ProductId, t.CategoryId });
+
+            modelBuilder.Entity<ProductCategory>()
+            .HasOne(pr => pr.Product)
+            .WithMany(p => p.ProductCategory)
+            .HasForeignKey(pr => pr.ProductId);
+
+            modelBuilder.Entity<ProductCategory>()
+                .HasOne(c => c.Category)
+                .WithMany(p => p.ProductCategory)
+                .HasForeignKey(c => c.CategoryId);
+
         }
 
         public BaseContext()

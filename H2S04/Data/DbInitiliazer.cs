@@ -20,11 +20,9 @@ namespace H2S04.Data
                     DbContextOptions<BaseContext>>());
         }
         public void Seed()
-        {
-
-            IsDropped();
-            IsCreated();
-
+        {       
+                IsDropped();
+                IsCreated();
                 Category category = new Category
                 {
                     Id = 1,
@@ -32,13 +30,20 @@ namespace H2S04.Data
 
                 };
 
-                _context.Category.Add(category);
-
                 Product product = new Product
                 {
                     Name = "alc",
                     Price = 231,
-                    Categories = new List<Category> { category }
+                };
+
+                product.ProductCategory = new List<ProductCategory>
+                {
+                    new ProductCategory
+                    {
+                        Category = category,
+                        Product = product
+                    
+                    }
                 };
 
                 _context.Product.Add(product);
@@ -46,7 +51,6 @@ namespace H2S04.Data
                 _context.SaveChanges();
 
         }
-
         public bool IsCreated() => _context.Database.EnsureCreated();
         public bool IsDropped() => _context.Database.EnsureDeleted();
     }

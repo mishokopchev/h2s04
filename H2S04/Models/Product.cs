@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace H2S04.Models
 {
     public class Product
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity),]
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -20,7 +20,7 @@ namespace H2S04.Models
         [DataType(DataType.Date)]
         public DateTime LastModified { get; set; }
 
-        public IList<Category> Categories { get; set; }
+        public List<ProductCategory> ProductCategory { get; set; }
 
         public Product()
         {
