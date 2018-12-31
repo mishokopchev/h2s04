@@ -17,5 +17,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Data\" />
+    <Folder Include="Pages\Secure\" />
+    <Folder Include="Pages\Secure\Admin\" />
   </ItemGroup>
 </Project>
