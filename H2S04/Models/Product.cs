@@ -14,17 +14,17 @@ namespace H2S04.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public string Currency { get; set; } = "BGN";
 
         [DataType(DataType.Date)]
-        [Column()]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         [DataType(DataType.Date)]
         public DateTime LastModified { get; set; } = DateTime.Now;
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
-        public string Image { get; set; } = "default.png";
+        public string Image { get; set; } = "default.jpg";
 
         public List<ProductCategory> ProductCategory { get; set; }
 

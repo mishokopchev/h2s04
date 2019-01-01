@@ -17,7 +17,12 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Data\" />
-    <Folder Include="Pages\Secure\" />
-    <Folder Include="Pages\Secure\Admin\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Pages\Security\Admin\Product\Create.cshtml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\Security\Admin\Product\Create.cshtml" />
   </ItemGroup>
 </Project>

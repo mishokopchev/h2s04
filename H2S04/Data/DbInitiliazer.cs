@@ -30,10 +30,13 @@ namespace H2S04.Data
 
                 };
 
+                _context.Category.Add(category);
+
                 Product product = new Product
                 {
-                    Name = "alc",
-                    Price = 231,
+                    Name = "Smirnoff Vodka",
+                    Price = 23,
+                    Description = "Russion Vodka",
                 };
 
                 product.ProductCategory = new List<ProductCategory>
@@ -42,7 +45,6 @@ namespace H2S04.Data
                     {
                         Category = category,
                         Product = product
-                    
                     }
                 };
 
