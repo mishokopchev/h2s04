@@ -19,11 +19,18 @@
     <Folder Include="Models\" />
     <Folder Include="Data\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Pages\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Pages\Security\Admin\Product\Create.cshtml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Security\Admin\Product\Create.cshtml" />
+    <Content Remove="Pages\Account\Login.cshtml" />
+    <Content Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
+    <Content Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ScaffoldingReadme.txt" />
   </ItemGroup>
 </Project>

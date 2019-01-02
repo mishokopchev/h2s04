@@ -24,7 +24,6 @@ namespace H2S04
 
                 try
                 {
-                
                     DbInitiliazer initiliazer = new DbInitiliazer(services);
                     initiliazer.Seed();
                 }

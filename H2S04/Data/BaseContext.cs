@@ -21,6 +21,7 @@ namespace H2S04.Data
         public DbSet<Models.Attribute> Attribute{ get; set; }
         public DbSet<Models.AttributeValue> AttributeValue { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
