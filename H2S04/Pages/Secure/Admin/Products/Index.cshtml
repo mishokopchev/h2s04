@@ -1,10 +1,8 @@
 @page
 @model H2S04.Pages.Secure.Admin.Products.IndexModel
-
 @{
     ViewData["Title"] = "Admin Products";
 }
-
 <h1>Admin Products</h1>
 
 <p>
@@ -41,42 +39,58 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Products) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Currency)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModified)
-            </td>
-            <td>    
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @{
-                    var content = "/images/";
-                    content += item.Image.ToString();
-                }
-                <img src=@content/>
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @{
+                        var content = "/images/";
+                        content += item.Image.ToString();
+                    }
+                    <img src=@content style="width:50px;height:75;" />
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<ul class="pagination">
+
+    @for (var i = 1; i <= Model.TotalPages(); i++)
+    {
+
+        <li class="page-item @(i == Model.CurrentPage ? "active" : "" )">
+            <a asp-page="./Index" asp-route-CurrentPage="@i" class="page-link">@i</a>
+        </li>
+
+    }
+    
+    </ul>
+
+

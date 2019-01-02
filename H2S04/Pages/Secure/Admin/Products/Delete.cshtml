@@ -52,7 +52,12 @@
             @Html.DisplayNameFor(model => model.Product.Image)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Image)
+            @{
+                var content = "/images/";
+                content += @Model.Product.Image.ToString();
+            }
+            <img src=@content style="width:50px;height:75;" />
+
         </dd>
     </dl>
     

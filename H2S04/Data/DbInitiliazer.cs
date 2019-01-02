@@ -39,6 +39,20 @@ namespace H2S04.Data
                     Description = "Russion Vodka",
                 };
 
+                Product product1 = new Product
+                {
+                    Name = "Russion Standard Vodka",
+                    Price = 18,
+                    Description = "Russion Vodka",
+                };
+
+                Product product2 = new Product
+                {
+                    Name = "Russion Standard Vodka",
+                    Price = 18,
+                    Description = "Russion Vodka",
+                };
+
                 product.ProductCategory = new List<ProductCategory>
                 {
                     new ProductCategory
@@ -48,8 +62,8 @@ namespace H2S04.Data
                     }
                 };
 
-                _context.Product.Add(product);
-
+                _context.Product.AddRange(new Product[] { product, product1,product2 });
+                
                 _context.SaveChanges();
 
         }
