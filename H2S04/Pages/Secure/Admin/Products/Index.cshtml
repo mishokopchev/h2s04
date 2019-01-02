@@ -8,6 +8,16 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<div>
+    <form>
+        <p>
+            Name:
+            <input type="text" asp-for="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+</div>
 <table class="table">
     <thead>
         <tr>
