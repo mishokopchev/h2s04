@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace H2S04.Pages
 {
 
-    [Authorize(Roles = "ProductAdministrators")]
+    [AllowAnonymous]
     public class PrivacyModel : PageModel
     {
         public void OnGet()

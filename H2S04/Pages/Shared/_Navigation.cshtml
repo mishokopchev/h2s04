@@ -14,8 +14,11 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Secure/Catalog/Index">Catalog</a>
+                    </li>
                     @if (User.IsInRole(Constants.ProductAdministratorsRole))
-                    {
+                    { 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Secure/Admin/Products/Index">Products</a>
                         </li>
@@ -23,7 +26,6 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Secure/Admin/Categories/Index">Categories</a>
                         </li>
                     }
-
                 </ul>
             </div>
             @await Html.PartialAsync("_LoginPartial")
