@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,10 +28,17 @@ namespace H2S04
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddEntityFrameworkNpgsql().AddDbContext<BaseContext>();
+            services.AddEntityFrameworkNpgsql().AddDbContext<BaseContext>(
+            );
+
+            //services.AddEntityFrameworkNpgsql().AddDbContext<UserContext>();
+
+            services.AddDbContext<UserContext>(options =>
+               options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<BaseContext>()
+            .AddEntityFrameworkStores<UserContext>()
             .AddDefaultTokenProviders();
 
             //services.Configure<IdentityOptions>(options =>

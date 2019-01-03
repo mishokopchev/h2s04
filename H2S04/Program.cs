@@ -26,6 +26,9 @@ namespace H2S04
                 {
                     DbInitiliazer initiliazer = new DbInitiliazer(services);
                     initiliazer.Seed();
+
+                    var userContext =  services.GetRequiredService<UserContext>();
+                    userContext.Database.EnsureCreated();
                 }
                 catch (Exception ex)
                 {
