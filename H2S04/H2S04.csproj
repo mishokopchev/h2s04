@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
     <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
     <Folder Include="Data\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Pages\Account\" />
+    <Folder Include="Authorization\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Pages\Security\Admin\Product\Create.cshtml.cs" />
