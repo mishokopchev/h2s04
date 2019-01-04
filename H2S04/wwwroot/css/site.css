@@ -133,7 +133,7 @@ body {
     transform: scale(0);
 }
 
-    .block2-btn-addwishlist:hover {
+.block2-btn-addwishlist:hover {
         color: white;
     }
 
@@ -165,7 +165,7 @@ body {
     opacity: 1;
 }
 
-    .block2-overlay:hover .block2-btn-addcart {
+.block2-overlay:hover .block2-btn-addcart {
         bottom: 20px;
     }
 
@@ -177,7 +177,4 @@ body {
         -o-transform: scale(1);
         transform: scale(1);
     }
-
-.wrap-pic-w img {
-    width: 100%;
-}
+    
