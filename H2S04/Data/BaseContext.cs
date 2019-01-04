@@ -19,6 +19,7 @@ namespace H2S04.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Models.Attribute> Attribute{ get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Models.AttributeValue> AttributeValue { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

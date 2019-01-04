@@ -32,6 +32,7 @@
     <Content Remove="Pages\Account\Login.cshtml" />
     <Content Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
     <Content Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
+    <Content Remove="Models\Order.json" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ScaffoldingReadme.txt" />
