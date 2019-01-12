@@ -46,13 +46,20 @@ namespace H2S04.Pages.Secure.Admin.Products
                 products = products.Where(pr => pr.Name.Contains(SearchString));
             }
 
-            products.Include(p => p.ProductCategory)
+            products = products.Include(p => p.ProductCategory)
                         .ThenInclude(p => p.Category);
 
-
             Count = await products.CountAsync();
-            Products = await products.Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToListAsync();
-            
+
+            if(Count is 0)
+            {
+                ModelState.AddModelError(string.Empty, "No data");
+            }
+
+            var retrieved = await products.Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToListAsync();
+            Products = retrieved;
+
+
         }
     }
 }

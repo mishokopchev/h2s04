@@ -30,7 +30,8 @@ namespace H2S04.Pages.Secure.Admin.Products
                 return NotFound();
             }
 
-            Product = await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
+            Product = await _context.Product.Include(p => p.ProductCategory)
+                        .ThenInclude(p => p.Category).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Product == null)
             {

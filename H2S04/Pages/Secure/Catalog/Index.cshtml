@@ -14,19 +14,52 @@
                 <h4 class="">
                     Categories
                 </h4>
+                
+                        @*@Html.ListBoxFor(m => m.SelectedCategories,
+                new MultiSelectList(Model.Categories
+                , "Id", "Name"), null)*@
 
-                <ul class="">
-                    <li class="">
-                        <a href="#" class="s-text13 active1">
-                            All
-                        </a>
-                    </li>
-                </ul>
 
+                @*@Html.ListBoxFor(m => m.SelectedCategories, new MultiSelectList(Model.Categories, "Id", "Name"), new { @class = "chosen-select", @multiple = "true" })*@
+
+                @*<div class="form-group">
+                    @Html.DropDownListFor(m => m.SelectedCategories, new SelectList(Model.Categories, "Id", "Name"), new { @class = "form-control", multiple = "true" })
+                </div>*@
+                
                 <!--  -->
                 <h4 class="">
                     Filters
                 </h4>
+                <form>
+                    @*<p>
+                        Name:
+                        <input type="text" asp-for="SearchString" />
+                        <input type="submit" value="Filter" />
+                    </p>*@
+
+                    @*<div class="form-group">
+                        <div class="form-control">
+                            <select asp-for="SelectedCategoryId" asp-items="@(new SelectList(Model.
+                        Categories,"Id","Name") )"></select>
+                        </div>
+                    </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <select asp-for="SelectedCategoryId" asp-items="@Model.CategoryItems"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="SearchString" class="control-label"></label>
+                        <input asp-for="SearchString" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Search" class="btn btn-primary" />
+                    </div>
+
+                </form>
 
             </div>
         </div>
@@ -35,6 +68,11 @@
             <section>
                 <div class="container">
                     <div class="row">
+
+                        @if(Model.Count == 0){
+                            <p>No data</p>
+                        }
+
                         @foreach (var item in Model.Products)
     {
                     <div class="col-sm-12 col-md-6 col-lg-4">
@@ -42,13 +80,13 @@
                         <div class="block2">
                             <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
                                 @{
-                                var content = "/images/";
-                                content += item.Image.ToString();
+                var content = "/images/";
+                content += item.Image.ToString();
 
                                 }
-                                <img src=@content style="width:100%;height:100%"/>
+                                <img src=@content style="width:100%;height:100%" />
 
-                              
+
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -65,6 +103,9 @@
                             </div>
 
                             <div class="block2-txt p-t-20">
+                                <div>
+                                    @item.Name
+                                </div>
                                 <span class="block2-price m-text6 p-r-5">
                                     @item.Price <span> @item.Currency</span>
                                 </span>
@@ -83,5 +124,36 @@
 
     </div>
 
+    <ul class="pagination">
+
+        @for (var i = 1; i <= Model.TotalPages(); i++)
+    {
+
+        <li class="page-item @(i == Model.CurrentPage ? "active" : "" )">
+            <a asp-page="./Index" asp-route-CurrentPage="@i" class="page-link">@i</a>
+        </li>
+
+}
+
+    </ul>
 
 </div>
+<script>
+    @*(function () {
+            var button = document.querySelector("block2-btn-addcart");
+            button.addEventListener("click", function (event) {
+                    console.log(event)
+            }, false);
+        })();*@
+
+
+       setTimeout(function(){
+                jQuery(".block2-btn-addcart").click(function(e){console.log(e)})
+        },500)
+
+
+
+
+
+
+</script>

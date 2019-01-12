@@ -43,12 +43,23 @@
                 @Html.DisplayNameFor(model => model.Products[0].IsActive)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Products[0].ProductCategory)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Products[0].Image)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
+        @if(Model.Count is 0){
+            <tr>
+                <td>
+                    No data
+                </td>
+            </tr>
+        }
+
         @foreach (var item in Model.Products)
         {
             <tr>
@@ -74,6 +85,17 @@
                     @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
                 <td>
+                    
+                        @if(item.ProductCategory != null){
+                            <ul>
+                             @foreach(var productCategory in item.ProductCategory){
+                              Category category = productCategory.Category;
+                                <li>@category.Name</li>
+                              }
+                            </ul>
+                        }
+                </td>
+                <td>
                     @{
                         var content = "/images/";
                         content += item.Image.ToString();
@@ -81,8 +103,8 @@
                     <img src=@content style="width:50px;height:75;" />
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> 
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

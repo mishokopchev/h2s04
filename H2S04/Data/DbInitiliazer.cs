@@ -30,11 +30,19 @@ namespace H2S04.Data
 
                 };
 
-                _context.Category.Add(category);
-
-                Product product = new Product
+                Category category1 = new Category
                 {
-                    Name = "Smirnoff Vodka",
+                    Id = 2,
+                    Name = "Vodka"
+
+                };
+
+            _context.Category.Add(category);
+            _context.Category.Add(category1);
+
+            Product product = new Product
+                {
+                    Name = "Whiskey Vafla",
                     Price = 23,
                     Description = "Russion Vodka",
                 };
@@ -61,7 +69,7 @@ namespace H2S04.Data
                 };
 
 
-            product.ProductCategory = new List<ProductCategory>
+                product.ProductCategory = new List<ProductCategory>
                 {
                     new ProductCategory
                     {
@@ -70,7 +78,10 @@ namespace H2S04.Data
                     }
                 };
 
-                _context.Product.AddRange(new Product[] { product, product1,product2,product3 });
+                _context.Product.Add(product);
+                _context.SaveChanges();
+
+                _context.Product.AddRange(new Product[] {product1,product2,product3 });
                 
                 _context.SaveChanges();
 
