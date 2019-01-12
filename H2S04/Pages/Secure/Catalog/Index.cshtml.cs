@@ -112,9 +112,6 @@ namespace H2S04.Pages.Secure.Catalog
         {
             Categories = await BaseContext.Category.ToListAsync();
 
-
-
-
         }
     }
 

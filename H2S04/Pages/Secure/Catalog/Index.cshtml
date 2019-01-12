@@ -95,9 +95,15 @@
 
                                     <div class="block2-btn-addcart w-size1 trans-0-4">
                                         <!-- Button -->
-                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                        <button class="add-to-cart flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                             Add to Cart
                                         </button>
+                                        <div class="details-link">
+                                            <a asp-page="/Secure/Admin/Products/Details" asp-route-id="@item.Id" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">Details</a>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +154,7 @@
 
 
        setTimeout(function(){
-                jQuery(".block2-btn-addcart").click(function(e){console.log(e)})
+                jQuery(".add-to-cart").click(function(e){console.log(e)})
         },500)
 
 

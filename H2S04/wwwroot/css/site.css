@@ -177,4 +177,6 @@ body {
         -o-transform: scale(1);
         transform: scale(1);
     }
-    
+.details-link:hover{
+    background-color:white;
+}
