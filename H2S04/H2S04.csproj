@@ -23,9 +23,11 @@
     <Folder Include="Pages\Account\" />
     <Folder Include="Authorization\" />
     <Folder Include="Pages\Secure\Catalog\" />
+    <Folder Include="Pages\Secure\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Pages\Security\Admin\Product\Create.cshtml.cs" />
+    <Compile Remove="Pages\Secure\Cart\Edit.cshtml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Security\Admin\Product\Create.cshtml" />
@@ -33,6 +35,9 @@
     <Content Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
     <Content Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
     <Content Remove="Models\Order.json" />
+    <Content Remove="Pages\Secure\Cart\Index.cshtml" />
+    <Content Remove="Pages\Secure\Cart\Create.cshtml" />
+    <Content Remove="Pages\Secure\Cart\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ScaffoldingReadme.txt" />

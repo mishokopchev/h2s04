@@ -68,8 +68,12 @@ namespace H2S04.Data
                     Description = "Russion Vodka",
                 };
 
+            product2.ProductCategory.Add(new ProductCategory { CategoryId = category1.Id });
+            product3.ProductCategory.Add(new ProductCategory { CategoryId = category1.Id });
+            product1.ProductCategory.Add(new ProductCategory { CategoryId = category1.Id });
 
-                product.ProductCategory = new List<ProductCategory>
+
+            product.ProductCategory = new List<ProductCategory>
                 {
                     new ProductCategory
                     {

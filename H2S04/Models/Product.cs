@@ -26,9 +26,9 @@ namespace H2S04.Models
 
         public string Image { get; set; } = "default.jpg";
 
-        public List<ProductCategory> ProductCategory { get; set; }
+        public List<ProductCategory> ProductCategory { get; set; } = new List<ProductCategory>();
 
-        public List<ProductAttributeValue> ProductAttributes { get; set; }
+        public List<ProductAttributeValue> ProductAttributes { get; set; } = new List<ProductAttributeValue>();
 
         public Product()
         {

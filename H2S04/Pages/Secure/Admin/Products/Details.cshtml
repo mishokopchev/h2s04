@@ -60,6 +60,17 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Product.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    @if (User.IsInRole(Constants.ProductAdministratorsRole))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Product.Id">Edit</a>
+        <a asp-page="./Index"> Back to List</a>
+    }
+    else
+    {
+        <a asp-page="/Secure/Catalog/Index" asp-route-id="@Model.Product.Id">Edit</a>
+
+    }
 </div>
+
+
+

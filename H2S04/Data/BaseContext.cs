@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using H2S04.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -60,5 +60,7 @@ namespace H2S04.Data
         public BaseContext()
         {
         }
+
+        public DbSet<H2S04.Models.Bag> Bag { get; set; }
     }
 }

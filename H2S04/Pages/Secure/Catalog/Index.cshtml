@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <select asp-for="SelectedCategoryId" asp-items="@Model.CategoryItems"></select>
+                            <select asp-for="@Model.SelectedCategoryId" asp-items="@Model.CategoryItems"></select>
                         </div>
                     </div>
 
@@ -136,7 +136,7 @@
     {
 
         <li class="page-item @(i == Model.CurrentPage ? "active" : "" )">
-            <a asp-page="./Index" asp-route-CurrentPage="@i" class="page-link">@i</a>
+            <a asp-page="./Index" asp-route-SelectedCategoryId="@Model.SelectedCategoryId"  asp-route-SearchString="@Model.SearchString" asp-route-CurrentPage="@i" class="page-link">@i</a>
         </li>
 
 }

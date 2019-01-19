@@ -27,13 +27,13 @@ namespace H2S04.Pages.Secure.Catalog
         public int CurrentPage { get; set; } = 1;
 
         [BindProperty(SupportsGet = true)]
-        public int SelectedCategoryId { get; set; } = 0;
+        public int SelectedCategoryId { get; set; }
 
         public int Count { get; set; }
 
         public int PageSize { get; set; } = 2;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty(SupportsGet =true)]
         public string SearchString { get; set; }
 
         public IList<Product> Products { get; set; }
@@ -66,6 +66,10 @@ namespace H2S04.Pages.Secure.Catalog
 
             var products = from s in BaseContext.Product select s;
 
+            products.Include(p => p.ProductCategory)
+                        .ThenInclude(p => p.Category);
+
+
             if (!String.IsNullOrEmpty(SearchString))
             {
                 products = products.Where(pr => pr.Name.Contains(SearchString));
@@ -73,12 +77,8 @@ namespace H2S04.Pages.Secure.Catalog
 
             if (SelectedCategoryId != 0 )
             {
-                products = products.Where(pr => pr.ProductCategory.All((elem) => elem.CategoryId == SelectedCategoryId));
+                products = products.Where(pr => pr.ProductCategory.Any(arg => arg.CategoryId == SelectedCategoryId));
             }
-
-            products.Include(p => p.ProductCategory)
-                        .ThenInclude(p => p.Category);
-
 
             Count = await products.CountAsync();
 
@@ -99,7 +99,7 @@ namespace H2S04.Pages.Secure.Catalog
 
         private bool CheckForNoData()
         {
-            if (Count == 0)
+            if (Count  ==  0) 
             {
                 ModelState.AddModelError(string.Empty, "No data");
                 return false;
