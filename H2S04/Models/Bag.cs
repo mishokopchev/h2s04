@@ -12,7 +12,7 @@ namespace H2S04.Models
 
         public string UserId { get; set; }
 
-        public IList<int> Products { get; set; }
+        public IList<int> Products { get; set; } = new List<int>();
 
     }
 }

@@ -63,8 +63,6 @@ namespace H2S04.Pages.Secure.Bag
                 _productService.Update(bag);
             }
 
-            RedirectToPage("/Secure/Bag");
-
         }
 
         private List<Product> All(HashSet<int> productsId)

@@ -29,6 +29,8 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Price)
         </dd>
+        @if (User.IsInRole(Constants.ProductAdministratorsRole))
+        {
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.CreatedDate)
         </dt>
@@ -47,13 +49,14 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.IsActive)
         </dd>
+        }
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.Image)
         </dt>
         <dd class="col-sm-10">
             @{
-                var content = "/images/";
-                content += @Model.Product.Image.ToString();
+            var content = "/images/";
+            content += @Model.Product.Image.ToString();
             }
             <img src=@content style="width:50px;height:75px;" />
         </dd>
@@ -67,7 +70,7 @@
     }
     else
     {
-        <a asp-page="/Secure/Catalog/Index" asp-route-id="@Model.Product.Id">Edit</a>
+        <a asp-page="/Secure/Catalog/Index" asp-route-id="@Model.Product.Id">Back To Catalog</a>
 
     }
 </div>

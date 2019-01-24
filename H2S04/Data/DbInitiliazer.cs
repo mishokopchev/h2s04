@@ -26,21 +26,19 @@ namespace H2S04.Data
 
                 Category whiskey = new Category
                 {
-                    Id = 1,
                     Name = "Whiskey"
 
                 };
 
                 Category vodka = new Category
                 {
-                    Id = 2,
+                
                     Name = "Vodka"
 
                 };
 
                 Category rom = new Category
                 {
-                    Id = 3,
                     Name = "Rom"
 
                 };
@@ -83,11 +81,11 @@ namespace H2S04.Data
                     Image = "roe-coe.jpg"
                 };
 
-                jack.ProductCategory.Add(new ProductCategory { CategoryId = whiskey.Id });
+                jack.ProductCategory.Add(new ProductCategory { Category = whiskey});
 
-                savoy.ProductCategory.Add(new ProductCategory { CategoryId = vodka.Id });
-                romAlco.ProductCategory.Add(new ProductCategory { CategoryId = rom.Id });
-                roe.ProductCategory.Add(new ProductCategory { CategoryId = whiskey.Id });
+                savoy.ProductCategory.Add(new ProductCategory { Category = vodka });
+                romAlco.ProductCategory.Add(new ProductCategory { Category = rom });
+                roe.ProductCategory.Add(new ProductCategory { Category = whiskey });
 
                 _context.Product.AddRange(new Product[] {romAlco,jack,savoy,roe});
                 
