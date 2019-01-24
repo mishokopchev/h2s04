@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using H2S04.Authorization;
 using H2S04.Data;
+using H2S04.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,24 +43,6 @@ namespace H2S04
             .AddEntityFrameworkStores<UserContext>()
             .AddDefaultTokenProviders();
 
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    // Password settings
-            //    options.Password.RequireDigit = true;
-            //    options.Password.RequiredLength = 8;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireUppercase = true;
-            //    options.Password.RequireLowercase = false;
-            //    options.Password.RequiredUniqueChars = 6;
-
-            //    // Lockout settings
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-            //    options.Lockout.MaxFailedAccessAttempts = 10;
-            //    options.Lockout.AllowedForNewUsers = true;
-
-            //    // User settings
-            //    options.User.RequireUniqueEmail = true;
-            //});
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -86,7 +69,9 @@ namespace H2S04
 
             services.AddScoped<IAuthorizationHandler,ProductAdministratorAuthorizationHandler>();
 
+            services.AddScoped<ProductService>();
 
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -102,7 +87,6 @@ namespace H2S04
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

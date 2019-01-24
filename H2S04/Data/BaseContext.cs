@@ -61,6 +61,5 @@ namespace H2S04.Data
         {
         }
 
-        public DbSet<H2S04.Models.Bag> Bag { get; set; }
     }
 }

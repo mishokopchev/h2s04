@@ -23,69 +23,73 @@ namespace H2S04.Data
         {       
                 IsDropped();
                 IsCreated();
-                Category category = new Category
+
+                Category whiskey = new Category
                 {
                     Id = 1,
                     Name = "Whiskey"
 
                 };
 
-                Category category1 = new Category
+                Category vodka = new Category
                 {
                     Id = 2,
                     Name = "Vodka"
 
                 };
 
-            _context.Category.Add(category);
-            _context.Category.Add(category1);
-
-            Product product = new Product
+                Category rom = new Category
                 {
-                    Name = "Whiskey Vafla",
+                    Id = 3,
+                    Name = "Rom"
+
+                };
+
+            _context.Category.Add(whiskey);
+            _context.Category.Add(vodka);
+            _context.Category.Add(rom);
+
+            _context.SaveChanges();
+
+            Product jack = new Product
+                {
+                    Name = "Jack Daniels",
                     Price = 23,
-                    Description = "Russion Vodka",
+                    Description = "American Whiskey",
+                    Image="jack-daniels.jpeg"
                 };
 
-                Product product1 = new Product
-                {
-                    Name = "Russion Standard Vodka",
-                    Price = 18,
-                    Description = "Russion Vodka",
+            Product savoy = new Product
+            {
+                Name = "Savoy Vodka",
+                Price = 18,
+                Description = "Russion Vodka",
+                Image = "savoy-vodka.jpeg"
                 };
 
-                Product product2 = new Product
+                Product romAlco = new Product
                 {
-                    Name = "Russion Standard Vodka",
-                    Price = 18,
-                    Description = "Russion Vodka",
+                    Name = "Captain Morgan",
+                    Price = 9,
+                    Description = "Rom",
+                    Image = "captain-morgan.jpg"
                 };
 
-                Product product3 = new Product
+                Product roe = new Product
                 {
-                    Name = "Huston",
+                    Name = "Roe Coe Whiskey",
                     Price = 128,
-                    Description = "Russion Vodka",
+                    Description = "Whiskey Expensive",
+                    Image = "roe-coe.jpg"
                 };
 
-            product2.ProductCategory.Add(new ProductCategory { CategoryId = category1.Id });
-            product3.ProductCategory.Add(new ProductCategory { CategoryId = category1.Id });
-            product1.ProductCategory.Add(new ProductCategory { CategoryId = category1.Id });
+                jack.ProductCategory.Add(new ProductCategory { CategoryId = whiskey.Id });
 
+                savoy.ProductCategory.Add(new ProductCategory { CategoryId = vodka.Id });
+                romAlco.ProductCategory.Add(new ProductCategory { CategoryId = rom.Id });
+                roe.ProductCategory.Add(new ProductCategory { CategoryId = whiskey.Id });
 
-            product.ProductCategory = new List<ProductCategory>
-                {
-                    new ProductCategory
-                    {
-                        Category = category,
-                        Product = product
-                    }
-                };
-
-                _context.Product.Add(product);
-                _context.SaveChanges();
-
-                _context.Product.AddRange(new Product[] {product1,product2,product3 });
+                _context.Product.AddRange(new Product[] {romAlco,jack,savoy,roe});
                 
                 _context.SaveChanges();
 

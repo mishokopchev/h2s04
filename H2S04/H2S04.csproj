@@ -14,6 +14,7 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
     <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.7.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +24,9 @@
     <Folder Include="Pages\Account\" />
     <Folder Include="Authorization\" />
     <Folder Include="Pages\Secure\Catalog\" />
-    <Folder Include="Pages\Secure\Car\" />
+    <Folder Include="Services\" />
+    <Folder Include="Pages\Secure\Bag\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Pages\Security\Admin\Product\Create.cshtml.cs" />
@@ -38,6 +41,7 @@
     <Content Remove="Pages\Secure\Cart\Index.cshtml" />
     <Content Remove="Pages\Secure\Cart\Create.cshtml" />
     <Content Remove="Pages\Secure\Cart\Edit.cshtml" />
+    <Content Remove="Controllers\ProductController.json" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ScaffoldingReadme.txt" />

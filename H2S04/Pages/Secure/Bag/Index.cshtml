@@ -1,0 +1,137 @@
+﻿@page
+@model IndexModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-9 col-lg-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Products[0].Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Products[0].Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Products[0].Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Products[0].Currency)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Products[0].ProductCategory)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Products[0].Image)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.Products)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Currency)
+                        </td>
+
+                        <td>
+
+                            @if (item.ProductCategory != null)
+        {
+                    <ul>
+                        @foreach (var productCategory in item.ProductCategory)
+    {
+                    Category category = productCategory.Category;
+                    <li>@category.Name</li>
+}
+                    </ul>
+}
+                        </td>
+                        <td>
+                            @{
+                            var content = "/images/";
+                            content += item.Image.ToString();
+
+                            }
+                            <img src=@content style="width:50px;height:75;" />
+                        </td>
+                        <td>
+                            <button data-id="@item.Id" class="remove-from-bag">Remove</button>
+                            <button id="btn_delete" class="label label-primary" onclick="location.href=@Url.Action("Remove","Index",@item)"></button>
+                            <form id="logoutForm" method="post" class="form-inline" asp-productId="@item.Id">
+                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                            </form>
+
+                        </td>
+                    </tr>
+            }
+                   
+                        </tbody>
+                    </table>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                    @if (Model.Count > 0)
+                 {
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Products count </th>
+                            <th> Calculated Price </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Count</td>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="button" value="Proceed" />
+                @using (Html.BeginForm("yourAction", "yourController"))
+                 {
+                <input type="submit" value="Some text" />
+                    }
+                    }
+
+        </div>
+       </div>
+
+</div>
+
+@*<script type="text/javascript">
+
+    $(function(){
+        $(".remove-from-bag").click(function(e){
+            e.preventDefault();
+
+            var name = $(this).attr("data-id");
+
+            if(name){
+                $.ajax({
+                  url: '@Url.Action("Index","RemoveLink")',
+                  type: "POST",
+                  data = JSON.stringify({id:name})  
+                })         
+            }
+
+        })
+    })
+
+</script>*@
+
+
+

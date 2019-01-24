@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MongoDB.Bson;
 
 namespace H2S04.Models
 {
     public class Bag
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public ObjectId Id { get; set; }
 
-        public IList<Product> Products { get; set; }
+        public string UserId { get; set; }
+
+        public IList<int> Products { get; set; }
 
     }
 }
