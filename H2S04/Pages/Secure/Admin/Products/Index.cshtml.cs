@@ -9,10 +9,12 @@ using H2S04.Data;
 using H2S04.Models;
 
 using PagedList;
-
+using Microsoft.AspNetCore.Authorization;
+using H2S04.Authorization;
 
 namespace H2S04.Pages.Secure.Admin.Products
-{
+    {
+    [Authorize(Roles = "ProductAdministrators")]
     public class IndexModel : PageModel
     {
         private readonly H2S04.Data.BaseContext _context;
@@ -39,7 +41,9 @@ namespace H2S04.Pages.Secure.Admin.Products
         public async Task OnGetAsync()
         {
         
-            var products = from s in _context.Product select s;
+            var products = from s in _context.Product select s ;
+
+            products = products.Where((arg) => arg.IsActive);
 
             if (!String.IsNullOrEmpty(SearchString))
             {

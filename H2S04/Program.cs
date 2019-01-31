@@ -30,7 +30,6 @@ namespace H2S04
                     var userContext =  services.GetRequiredService<UserContext>();
                     userContext.Database.EnsureCreated();
 
-
                     //SeedData.Initialize(services);
                 }
                 catch (Exception ex)

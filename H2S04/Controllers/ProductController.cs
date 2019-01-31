@@ -10,7 +10,6 @@ namespace H2S04.Controllers
 {
     [Route("api/bag/[controller]")]
     [ApiController]
-    [AllowAnonymous]
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;

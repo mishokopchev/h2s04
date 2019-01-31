@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using H2S04.Data;
 using H2S04.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace H2S04.Pages.Secure.Admin.Categories
 {
+    [Authorize(Roles = "ProductAdministrators")]
     public class EditModel : PageModel
     {
         private readonly H2S04.Data.BaseContext _context;
